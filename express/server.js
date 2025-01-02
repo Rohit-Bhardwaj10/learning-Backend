@@ -4,6 +4,28 @@ const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3500;
 
+
+// custom middleware logger....
+app.use((req,res,next)=>{
+    console.log(`${req.method} ${req.path}`);
+    
+})
+
+
+
+// built in middleware to handle urlencoded data 
+// in other words form data
+// 'content-type: application/x-www-form-urlencoded'
+app.use(express.urlencoded({extended:false}))
+
+// built in middleware for json
+app.use(express.json())
+
+
+// serve static files
+app.use(express.static(path.join(__dirname,'/public')));
+
+
 app.get("^/$|/index(.html)?", (req, res) => {
   //in express we can use regex in path name...
   // ^/$|/index(.html)? -> this is a regex for / or /index.html where .html is optional...
@@ -64,4 +86,6 @@ app.listen(PORT, () => {
 });
 
 
-// middleware
+// middleware(it is anything that comes b/w request and response)
+// 3 types -> built-in , custom and third party middleware...
+
