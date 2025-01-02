@@ -1,0 +1,18 @@
+ Working of Polygon
+Before delving deeper into the use cases of Polygon, one also needs to understand the working model of this popular layer 2 blockchain solution.  Just like the other protocols based on the proof-of-stake model, understanding the working of Polygon requires comprehending the critical components such as the network nodes, staking, governance and also other operations.
+
+Proof of Stake
+Polygon
+network functions on the Proof of Stake (POS) consensus mechanism.  Proof of Stake is characterized by the use of a series of node validators to confirm and verify various transaction blocks.  The different use cases of Polygon further affirms proper use of the processing power for the creation of the new blocks.
+
+In the consensus of Proof of Stake, the token holders are responsible for making the decisions about transactions, validating them, and verifying them. Proof of Stake algorithm offers people using MATIC tokens the potential for obtaining rewards, as the permissible roles are validators and delegators. Matic has multiple options for appraising the platform, as users have the ability to become a validator or delegator. 
+
+One needs a full blockchain node devoted to validating transactions in order to become a validator, and that node would earn a percentage of the transaction fees successfully verified and validated. In return for fulfilling the task of validation and verification of each transaction, validators will be eligible to earn newly minted MATIC tokens. Validators are liable to be penalized if they commit errors and mistakes that can cost them MATIC tokens, which can be either slashed or even destroyed.
+
+The delegators in the use cases of Polygon blockchain are a specific variant of public node network and they are eligible to receive the MATIC of other individuals and use it for entering into transactions experimentally.  The power vested in the hands of delegators is directly proportional to the stakes delegated to them. There is no complication for those delegators as is the case for node validators.
+
+In order to gain a deeper understanding of how Polygon functions, studying the Proof of Stake Bridge is also critical. It provides a smooth conduit for assets moving back and forth among two great blockchain networks. This POS Bridge is nothing but a group of smart contracts that assists transfer assets from Ethereum to the side chain of Polygon.
+
+The Polygon uses the PoS Bridge to transfer assets from Ethereum to the Polygon. Since the bridge is used for accessing decentralized applications and DeFi platforms, you will have to pay the transaction fee to access your credits.
+
+In order to access cheaper Polygon Network transactions, you will have to pay a fee to access the Polygon Bridge. Polygon Network makes use of an ETH bridge and the MATIC (ERC-20) or ERC-721 token bridge.
