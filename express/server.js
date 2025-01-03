@@ -1,30 +1,30 @@
-const { log } = require("console");
 const express = require("express");
 const app = express();
 const path = require("path");
+const cors = require("cors");
+const logEvents = require("./middleware/logEvents");
 const PORT = process.env.PORT || 3500;
 
-
 // custom middleware logger....
-app.use((req,res,next)=>{
-    console.log(`${req.method} ${req.path}`);
-    
-})
+app.use((req, res, next) => {
+  logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`, "reqLog.txt");
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
 
+// third party middleware....
+app.use(cors());
 
-
-// built in middleware to handle urlencoded data 
+// built in middleware to handle urlencoded data
 // in other words form data
 // 'content-type: application/x-www-form-urlencoded'
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }));
 
 // built in middleware for json
-app.use(express.json())
-
+app.use(express.json());
 
 // serve static files
-app.use(express.static(path.join(__dirname,'/public')));
-
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("^/$|/index(.html)?", (req, res) => {
   //in express we can use regex in path name...
@@ -43,7 +43,6 @@ app.get("/old-page(.html)?", (req, res) => {
   res.redirect(301, "./new-page.html"); //302 send by default
 });
 
-
 // route handlers....
 
 // ==>> handlers chaining..
@@ -58,34 +57,30 @@ app.get(
   }
 );
 
-const one = (req,res,next)=>{
-    console.log('one');
-    next()
-}
+const one = (req, res, next) => {
+  console.log("one");
+  next();
+};
 
-const two = (req,res,next)=>{
-    console.log('two');
-    next()
-}
+const two = (req, res, next) => {
+  console.log("two");
+  next();
+};
 
-const three = (req,res,next)=>{
-    console.log('three');
-    res.send('finally')
-}
+const three = (req, res, next) => {
+  console.log("three");
+  res.send("finally");
+};
 
-
-app.get('/chain(.html)?',[one,two,three]); //chaining functions 
-
+app.get("/chain(.html)?", [one, two, three]); //chaining functions
 
 app.get("/*", (req, res) => {
-    res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
-  });
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
 });
 
-
 // middleware(it is anything that comes b/w request and response)
 // 3 types -> built-in , custom and third party middleware...
-

@@ -11,10 +11,12 @@
   "author": "rohit bhardwaj",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "nodemon": "^3.1.9"
   },
   "devDependencies": {
+    "date-fns": "^4.1.0",
     "uuid": "^11.0.3"
   }
 }

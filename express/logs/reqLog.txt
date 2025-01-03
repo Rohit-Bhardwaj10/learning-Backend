@@ -1,0 +1,9 @@
+2025-01-02	23:57:34 	f4456b45-f3e8-44d7-a60f-9888e8bf4569	GET	undefined	/index
+2025-01-02	23:57:34 	cb501ea8-80d7-4c4e-b118-100d15e2d37f	GET	undefined	/css/style.css
+2025-01-02	23:58:30 	c95c7df4-4791-4316-8b77-ed9d8cf647bd	GET	undefined	/new-page.html
+2025-01-02	23:58:30 	dfa22c62-15f7-4ef5-acb1-029c5a62f1c5	GET	undefined	/css/style.css
+2025-01-02	23:58:30 	a1dab2b4-ac94-470e-a5ef-335022b1efda	GET	undefined	/img/img1.jpg
+2025-01-03	00:05:31 	7ac25cb4-6ee7-470a-9702-1d52d9a0f978	GET	undefined	/
+2025-01-03	00:05:31 	ff9ddf2e-18a6-46e5-ae6c-9b64bf9dc1d1	GET	undefined	/css/style.css
+2025-01-03	00:06:46 	1fcda64c-907b-4c26-9eab-287bfffe60e1	GET	undefined	/
+2025-01-03	00:06:46 	a8545d51-fc75-46bb-b0d5-6bb65781780c	GET	undefined	/css/style.css
