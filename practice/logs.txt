@@ -1,0 +1,61 @@
+2025-01-06	16:33:13 	3bd075c9-2ddf-4fa8-81a8-64dc844b09dd	/
+2025-01-06	16:33:13 	85097ea8-bced-4627-8b35-a65f683427c1	/favicon.ico
+2025-01-06	16:34:25 	480b8dd5-4ef9-46f6-a41b-ab26f8d35f78	/
+2025-01-06	16:34:32 	91016eae-1ddb-491f-9de2-da042ed435a5	/hello
+2025-01-06	16:34:45 	3626bb74-f993-437a-8bac-5ad378d8f102	/hello?myname=%22rohit
+2025-01-06	16:34:59 	dcdf1989-433f-4d7c-8f39-fd71b716ef50	/hello?myname=rohit
+2025-01-06	16:35:46 	f4e85be1-09e1-4d2d-bb7e-e02cc93f51e3	/hello?myname=rohit
+2025-01-06	16:37:11 	8d2b062b-cb84-4f29-847b-8c36cf411758	/hello?myname=rohit	[object Object]2025-01-06	16:37:32 	75f150e2-4528-4746-b78e-e223a9ef1d6d	/hello?myname=rohit	function urlFormat(urlObject, options) {
+  // Ensure it's an object, and not a string url.
+  // If it's an object, this is a no-op.
+  // this way, you can call urlParse() on strings
+  // to clean up potentially wonky urls.
+  if (typeof urlObject === 'string') {
+    urlObject = urlParse(urlObject);
+  } else if (typeof urlObject !== 'object' || urlObject === null) {
+    throw new ERR_INVALID_ARG_TYPE('urlObject',
+                                   ['Object', 'string'], urlObject);
+  } else if (urlObject instanceof URL) {
+    let fragment = true;
+    let unicode = false;
+    let search = true;
+    let auth = true;
+
+    if (options) {
+      validateObject(options, 'options');
+
+      if (options.fragment != null) {
+        fragment = Boolean(options.fragment);
+      }
+
+      if (options.unicode != null) {
+        unicode = Boolean(options.unicode);
+      }
+
+      if (options.search != null) {
+        search = Boolean(options.search);
+      }
+
+      if (options.auth != null) {
+        auth = Boolean(options.auth);
+      }
+    }
+
+    return bindingUrl.format(urlObject.href, fragment, unicode, search, auth);
+  }
+
+  return Url.prototype.format.call(urlObject);
+}2025-01-06	16:38:15 	9ed5f259-678f-4acf-843c-37c5dbfedd45	/hello?myname=rohit
+2025-01-06	16:38:42 	fa3e248f-665c-4793-b237-38c48705d4fd	/hello?myname=rohit
+2025-01-06	16:40:15 	389a748b-5e2a-4c1b-8100-f72e84d10518	/
+2025-01-06	16:40:21 	d5b55984-96d9-46cb-a5d0-45b98a54be5c	/
+2025-01-06	16:40:31 	c73e0671-254a-4d33-a0cb-9c5913f219b4	/
+2025-01-06	16:40:41 	37b78130-e562-4296-a3a4-1b2c72526697	/new-page.html
+2025-01-06	16:40:54 	c831a625-b7e8-48c4-ac5c-007f1e2b67dd	/new-page.html
+2025-01-06	16:41:37 	501f5d87-25a0-4c51-b915-44108a74dd75	/about?myname=rohit
+2025-01-06	16:43:13 	b9ae8987-dd6f-4110-891c-7bd6df688dde	/about?myname=rohit
+2025-01-06	16:43:51 	56d49b5c-69c8-4a3d-9478-0cb9006330df	/about?myname=rohit&userid=1
+2025-01-06	16:43:52 	abdaecb8-7ecd-4130-9047-22aac4a5fd4c	/about?myname=rohit&userid=1
+2025-01-06	16:44:15 	7a53a2a1-c5b6-4aed-89f6-ae403051dab1	/about?myname=rohit&userid=1
+2025-01-06	16:46:06 	c2f2f4ec-b44e-4e02-ae55-f8b927456288	/about?myname=rohit&userid=1
+2025-01-06	16:46:16 	ce7c4bdf-a070-4c95-913e-7c6b68cb37e1	/about?myname=tushar&userid=1

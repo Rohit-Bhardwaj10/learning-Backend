@@ -94,7 +94,7 @@ const server = http.createServer((req, res) => {
   // Check if requested file exists
   const fileExists = fs.existsSync(filePath);
 
-  if (fileExists) {
+  if (fileExists) { 
     // If file exists, serve it
     servefile(filePath, contentType, res);
   } else {
@@ -110,7 +110,7 @@ const server = http.createServer((req, res) => {
         // Redirect www page to home
         res.writeHead(301, { Location: "/" });
         res.end();
-        break;
+        break;f
       default:
         // Serve 404 page for all other cases
         servefile(path.join(__dirname, "views", "404.html"), "text/html", res);

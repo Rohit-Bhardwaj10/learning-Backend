@@ -4,6 +4,7 @@ const path = require("path");
 const cors = require("cors");
 const logEvents = require("./middleware/logEvents");
 const PORT = process.env.PORT || 3500;
+const errorHandler = require("./middleware/errorHandler");
 
 // custom middleware logger....
 app.use((req, res, next) => {
@@ -13,7 +14,23 @@ app.use((req, res, next) => {
 });
 
 // third party middleware....
-app.use(cors());
+
+const whitelist = [
+  "https://www.yoursite.com",
+  "http://127.0.0.1:5500",
+  "http://localhost:3500",
+];
+const corsoptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("not allowed by cors"));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsoptions));
 
 // built in middleware to handle urlencoded data
 // in other words form data
@@ -77,6 +94,8 @@ app.get("/chain(.html)?", [one, two, three]); //chaining functions
 app.get("/*", (req, res) => {
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
