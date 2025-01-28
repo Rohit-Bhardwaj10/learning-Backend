@@ -32,7 +32,7 @@ const path = require("path");
 //     //instead of hardcoding path use path module.
 
 //     if (err) throw err;
-//     console.log(data);
+//     console.log(data); 
 //   }
 // );
 
