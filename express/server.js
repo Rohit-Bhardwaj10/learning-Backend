@@ -2,10 +2,11 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const cors = require("cors");
-const {logger} = require("./middleware/logEvents");
+const { logger } = require("./middleware/logEvents");
 const PORT = process.env.PORT || 3500;
 const errorHandler = require("./middleware/errorHandler");
-
+const verifyJWT = require("./middleware/verifyJWT");
+const cookieparser = require("cookie-parser");
 
 // custom middleware logger....
 app.use(logger);
@@ -37,22 +38,27 @@ app.use(express.urlencoded({ extended: false }));
 // built in middleware for json
 app.use(express.json());
 
-// serve static files
-app.use("/",express.static(path.join(__dirname, "/public")));
+// middleware for cookies
+app.use(cookieparser());
 
+// serve static files
+app.use("/", express.static(path.join(__dirname, "/public")));
 
 // providing routes
-app.use('/subdir',require('./routes/subdir'));
-app.use('/',require("./routes/root"))
+app.use("/subdir", require("./routes/subdir"));
+app.use("/", require("./routes/root"));
 // RESTapi
-app.use('/employees',require('./routes/api/employees'))
+app.use("/register", require("./routes/api/register"));
+app.use("/auth", require("./routes/api/auth"));
+app.use("/refresh", require("./routes/api/refresh"));
+app.use("/logout", require("./routes/api/logout"));
 
 
+app.use(verifyJWT);
+app.use("/employees", require("./routes/api/employees"));
 
 // error handling middleware
 app.use(errorHandler);
-
-
 
 // app.get("^/$|/index(.html)?", (req, res) => {
 //   //in express we can use regex in path name...
@@ -108,18 +114,16 @@ app.use(errorHandler);
 
 // app.all() is used for routing
 
-app.all('*',(req,res)=>{
+app.all("*", (req, res) => {
   res.status(404);
-  if(req.accepts('html')){
-    res.sendFile(path.join(__dirname,"views","404.html"));
-  }else if(req.accepts('json')){
-    res.json({error:"404 not found"})
-  }else{
-    res.type('txt').send("404 not found")
+  if (req.accepts("html")) {
+    res.sendFile(path.join(__dirname, "views", "404.html"));
+  } else if (req.accepts("json")) {
+    res.json({ error: "404 not found" });
+  } else {
+    res.type("txt").send("404 not found");
   }
-})
-
-
+});
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
@@ -127,3 +131,5 @@ app.listen(PORT, () => {
 
 // middleware(it is anything that comes b/w request and response)
 // 3 types -> built-in , custom and third party middleware...
+
+// => to-do : make a logut route
