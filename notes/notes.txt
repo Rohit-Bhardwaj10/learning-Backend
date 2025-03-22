@@ -41,5 +41,4 @@ username:{
 
 export const User = mongoose.model("User",newSchema)
 
-==> READ MONGOOSE DOCS
 
